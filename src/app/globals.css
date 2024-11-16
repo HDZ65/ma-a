@@ -2,20 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-primary: #1a1a1a;
+    --color-secondary: #937456;
+    --color-accent: #d4b59e;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.logo-text {
+  @apply font-cormorant text-3xl font-light tracking-[0.2em] relative;
+}
+
+.logo-text::after {
+  content: 'PARIS';
+  @apply absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-[10px] tracking-[0.3em] font-montserrat text-gray-400;
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .font-cormorant {
+    font-feature-settings: "liga" 0;
+    letter-spacing: 0.2em;
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  }
 }
